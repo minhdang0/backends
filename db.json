@@ -1,0 +1,14 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "Bai viet 22",
+      "content": "Noi dung bai viet 22"
+    },
+    {
+      "id": 7,
+      "title": "fff",
+      "content": "fff"
+    }
+  ]
+}
