@@ -1,11 +1,7 @@
-const express = require("express");
-const router = express.Router();
 const fs = require("node:fs").promises;
 
 const DB_PATH = "./db.json";
 const RESOURCE = "posts";
-
-//
 
 const writeDb = async (resource, data) => {
   let db = {};
@@ -27,7 +23,32 @@ const readDb = async (resource) => {
   return db[resource];
 };
 
-router.get("/:id", async (req, res) => {
+exports.getAllPost = async (req, res) => {
+  let posts = await readDb(RESOURCE);
+  if (!posts) {
+    res.status(404).json({
+      status: "error",
+      message: "Not Found",
+    });
+    return;
+  }
+
+  if (req.query?.title) {
+    const searchValue = req.query.title.trim().toLowerCase();
+    if (searchValue) {
+      posts = posts.filter((item) =>
+        item.title.toLowerCase().includes(searchValue)
+      );
+    }
+  }
+
+  res.status(200).json({
+    status: "success",
+    data: posts,
+  });
+};
+
+exports.getOnePost = async (req, res) => {
   const id = +req.params.id;
   const posts = await readDb(RESOURCE);
   console.log(posts);
@@ -46,23 +67,9 @@ router.get("/:id", async (req, res) => {
     status: "success",
     data: post,
   });
-});
+};
 
-router.get("/", async (req, res) => {
-  const posts = await readDb(RESOURCE);
-  if (!posts) {
-    res.status(404).json({
-      status: "error",
-      message: "Not Found",
-    });
-    return;
-  }
-  res.status(200).json({
-    status: "success",
-    data: posts,
-  });
-});
-router.post("/", async (req, res) => {
+exports.createPost = async (req, res) => {
   const posts = await readDb(RESOURCE);
   const nextId = (posts.at(-1).id ?? 0) + 1;
   const data = { id: nextId, ...req.body };
@@ -75,28 +82,9 @@ router.post("/", async (req, res) => {
     status: "success",
     data: data,
   });
-});
+};
 
-router.delete("/:id", async (req, res) => {
-  const posts = await readDb(RESOURCE);
-  const id = +req.params.id;
-  const index = posts.findIndex((item) => item.id === id);
-
-  if (index === -1) {
-    return res.status(404).json({
-      status: "error",
-      message: "Not found",
-    });
-  }
-
-  posts.splice(index, 1);
-
-  await writeDb(RESOURCE, posts);
-
-  return res.status(204).send();
-});
-
-router.put("/:id", async (req, res) => {
+exports.updatePost = async (req, res) => {
   const posts = await readDb(RESOURCE);
   const post = posts.find((post) => post.id === +req.params.id);
 
@@ -112,10 +100,29 @@ router.put("/:id", async (req, res) => {
 
   await writeDb(RESOURCE, posts);
 
-  res.json({
+  res.status(200).json({
     status: "success",
     data: post,
   });
-});
+};
 
-module.exports = router;
+exports.deletePost = async (req, res) => {
+  const posts = await readDb(RESOURCE);
+  const id = +req.params.id;
+  const index = posts.findIndex((item) => item.id === id);
+
+  if (index === -1) {
+    res.status(404).json({
+      status: "error",
+      message: "Not found",
+    });
+
+    return;
+  }
+
+  posts.splice(index, 1);
+
+  await writeDb(RESOURCE, posts);
+
+  return res.status(204).json();
+};
