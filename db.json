@@ -75,5 +75,32 @@
       "title": "Bai viet 11",
       "content": "Noi dung bai viet 10"
     }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "content": "Binh luan 1",
+      "post_id": 1
+    },
+    {
+      "id": 2,
+      "content": "Binh luan 2",
+      "post_id": 1
+    },
+    {
+      "id": 3,
+      "content": "Binh luan 2",
+      "post_id": 2
+    },
+    {
+      "post_id": 1,
+      "content": "Xin chào anh em!",
+      "id": 4
+    },
+    {
+      "post_id": 2,
+      "content": "Xin chào anh em!",
+      "id": 5
+    }
   ]
 }

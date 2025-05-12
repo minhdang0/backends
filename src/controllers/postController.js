@@ -9,6 +9,7 @@ const {
   updatePost,
   deletePost,
 } = require("@/service/postService");
+const { getCommentsByPostId } = require("@/service/commentService");
 const RESOURCE = "posts";
 
 exports.getAllPost = async (req, res) => {
@@ -52,4 +53,23 @@ exports.deletePost = async (req, res) => {
   const index = await deletePost(id);
   if (index === -1) throw404();
   response.success(res, 204);
+};
+
+exports.getPostComments = async (req, res) => {
+  const post = await postsService.getPostById(req.params.id);
+  if (!post) throwError(404, "Not found.");
+
+  const comments = await getCommentsByPostId(post.id);
+  success(res, 200, comments);
+};
+
+exports.createPostComments = async (req, res) => {
+  const post = await postsService.getPostById(req.params.id);
+  if (!post) throwError(404, "Not found.");
+
+  const newComment = await createComment({
+    post_id: post.id,
+    content: req.body.content,
+  });
+  success(res, 201, newComment);
 };
