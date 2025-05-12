@@ -1,5 +1,5 @@
 const fs = require("fs/promises");
-const DB_PATH = "./path/to/db.json"; // hoặc export DB_PATH từ file config nếu cần
+const DB_PATH = "./db.json";
 
 const readDb = async (resource) => {
   const jsonDb = await fs.readFile(DB_PATH, "utf-8");

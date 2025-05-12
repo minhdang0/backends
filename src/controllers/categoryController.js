@@ -1,110 +1,52 @@
-const { readDb, writeDb } = require("../utils/db");
-
-const RESOURCE = "category";
+const {
+  getAllCategories,
+  getCategoryById,
+  createCategory,
+  deleteCategory,
+  updateCategory,
+} = require("@/service/categoryService");
+const response = require("../utils/response");
+const throw404 = require("@/utils/throw404");
 
 exports.getAllCategories = async (req, res) => {
-  let categories = await readDb(RESOURCE);
-  if (categories) {
-    res.status(404).json({
-      status: "error",
-      message: "Not found",
-    });
-
-    return;
-  }
-
+  let searchValue = null;
   if (req.query?.q) {
-    const searchValue = req.query?.q.trim().toLowerCase();
-
-    if (searchValue) {
-      categories = categories.filter(
-        (item) =>
-          item.name.toLowerCase().includes(searchValue) &&
-          item.description.toLowerCase().includes(searchValue)
-      );
-    }
+    searchValue = req.query.q.trim().toLowerCase();
   }
 
-  res.status(200).json({
-    status: "success",
-    data: categories,
-  });
+  let categories = await getAllCategories(searchValue);
+  response.success(res, 200, categories);
 };
 
 exports.getOneCategory = async (req, res) => {
   const id = +req.params.id;
-  const categories = await readDb(RESOURCE);
-  const category = categories.find((item) => item.id === id);
+  const category = await getCategoryById(id);
+  if (category) throw404();
 
-  if (!category) {
-    res.status(404).json({
-      status: "error",
-      message: "Not found",
-    });
-
-    return;
-  }
-
-  res.status(200).json({
-    status: "success",
-    message: "Not found",
-  });
+  response.success(res, 200, category);
 };
 
 exports.createCategory = async (req, res) => {
-  const categories = await readDb(RESOURCE);
-  const nextId = (categories.at(-1).id ?? 0) + 1;
-  const data = { id: nextId, ...req.body };
+  const data = { ...req.body };
 
-  categories.push(data);
+  const newData = await createCategory(data);
 
-  await writeDb(RESOURCE, categories);
-
-  res.status(201).json({
-    status: "success",
-    message: "Successfully create",
-    data: data,
-  });
+  response.success(res, 201, newData);
 };
 
 exports.updateCategory = async (req, res) => {
   const id = +req.params.id;
-  const categories = readDb(RESOURCE);
-  const category = categories.find((item) => item.id === id);
+  const category = await updateCategory(id, ...req.body);
 
-  if (!category) {
-    res.status(404).json({
-      status: "error",
-      message: "Not  found",
-    });
-    return;
-  }
-  Object.assign(category, ...req.body);
+  if (!category) throw404();
 
-  await writeDb(RESOURCE, categories);
-
-  res.status(200).json({
-    status: "success",
-    data: category,
-  });
+  response.success(res, 200, category);
 };
 
 exports.deleteCategory = async (req, res) => {
-  const categories = await readDb(RESOURCE);
   const id = +req.params.id;
-  const index = categories.findIndex((item) => item.id === id);
+  const index = await deleteCategory(id);
+  if (index === -1) throw404();
 
-  if (index === -1) {
-    res.status(404).json({
-      status: "error",
-      message: "Not found",
-    });
-
-    return;
-  }
-  categories.splice(index, 1);
-
-  await writeDb(RESOURCE, categories);
-
-  return res.status(204).json();
+  response.success(res, 204);
 };

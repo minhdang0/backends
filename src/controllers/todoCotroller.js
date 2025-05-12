@@ -2,7 +2,6 @@ const { readDb, writeDb } = require("../utils/db");
 
 const RESOURCE = "todos";
 
-// GET /todos?title=abc
 exports.getAllTodos = async (req, res) => {
   let todos = await readDb(RESOURCE);
 
@@ -27,7 +26,6 @@ exports.getAllTodos = async (req, res) => {
   });
 };
 
-// GET /todos/:id
 exports.getOneTodo = async (req, res) => {
   const id = +req.params.id;
   const todos = await readDb(RESOURCE);
@@ -47,7 +45,6 @@ exports.getOneTodo = async (req, res) => {
   });
 };
 
-// POST /todos
 exports.createTodo = async (req, res) => {
   const todos = await readDb(RESOURCE);
   const nextId = (todos.at(-1)?.id ?? 0) + 1;
@@ -67,7 +64,6 @@ exports.createTodo = async (req, res) => {
   });
 };
 
-// PUT /todos/:id
 exports.updateTodo = async (req, res) => {
   const id = +req.params.id;
   const todos = await readDb(RESOURCE);
@@ -92,7 +88,6 @@ exports.updateTodo = async (req, res) => {
   });
 };
 
-// DELETE /todos/:id
 exports.deleteTodo = async (req, res) => {
   const id = +req.params.id;
   const todos = await readDb(RESOURCE);

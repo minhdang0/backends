@@ -1,13 +1,14 @@
 const express = require("express");
 const router = express.Router();
+
+const postsValidator = require("@/validator/posts.validator");
 const {
+  createPost,
   getOnePost,
   getAllPost,
-  createPost,
   deletePost,
   updatePost,
-} = require("../controllers/postController");
-const postsValidator = require("../validator/posts.validator");
+} = require("@/controllers/postController");
 
 router.post("/", postsValidator.createPost, createPost);
 
@@ -20,5 +21,7 @@ router.delete("/:id", deletePost);
 router.put("/:id", postsValidator.updatePost, updatePost);
 
 router.patch("/:id", updatePost);
+
+router.get("/:id/comments",)
 
 module.exports = router;

@@ -2,7 +2,7 @@ const express = require("express");
 const authRouter = require("./auth.route");
 const postRouter = require("./posts.route");
 const commentRouter = require("./comments.route");
-const productRouter = requir("./product.route");
+const productRouter = require("./product.route");
 const todoRouter = require("./todo.route");
 
 const router = express.Router();
