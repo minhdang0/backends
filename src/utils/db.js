@@ -4,6 +4,7 @@ const DB_PATH = "./db.json";
 const readDb = async (resource) => {
   const jsonDb = await fs.readFile(DB_PATH, "utf-8");
   const db = JSON.parse(jsonDb);
+  console.log(db);
   return db[resource];
 };
 

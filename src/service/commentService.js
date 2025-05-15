@@ -60,6 +60,7 @@ const getCommentsByPostId = async (postId) => {
   const comments = await readDb(RESOURCE);
   return comments.filter((comment) => comment.post_id === +postId);
 };
+
 const CommentService = {
   getAllComments,
   getCommentById,

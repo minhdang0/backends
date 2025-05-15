@@ -1,16 +1,13 @@
 const throw404 = require("@/utils/throw404");
-const { readDb, writeDb } = require("../utils/db");
 const response = require("../utils/response");
 const {
   getAllPost,
   getPostById,
-  getIndexPost,
   createPost,
   updatePost,
   deletePost,
 } = require("@/service/postService");
 const { getCommentsByPostId } = require("@/service/commentService");
-const RESOURCE = "posts";
 
 exports.getAllPost = async (req, res) => {
   let searchValue = null;
@@ -56,16 +53,16 @@ exports.deletePost = async (req, res) => {
 };
 
 exports.getPostComments = async (req, res) => {
-  const post = await postsService.getPostById(req.params.id);
-  if (!post) throwError(404, "Not found.");
+  const post = await getPostById(req.params.id);
+  if (!post) throw404();
 
   const comments = await getCommentsByPostId(post.id);
   success(res, 200, comments);
 };
 
 exports.createPostComments = async (req, res) => {
-  const post = await postsService.getPostById(req.params.id);
-  if (!post) throwError(404, "Not found.");
+  const post = await getPostById(req.params.id);
+  if (!post) throw404();
 
   const newComment = await createComment({
     post_id: post.id,

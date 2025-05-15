@@ -1,0 +1,74 @@
+const db = require("@/configs/db");
+
+exports.findALl = async () => {
+  const [results] = await db.query("select * from movies ");
+
+  return results;
+};
+
+exports.findById = async (id) => {
+  const [results] = await db.query(`select * from movies where id = ?`, [id]);
+  return results[0] ?? null;
+};
+
+exports.create = async (data) => {
+  const fields = [
+    "showtime_id",
+    "name",
+    "description",
+    "category",
+    "director",
+    "duration",
+    "trailer",
+    "allowed_age",
+    "release_date",
+    "created_at",
+    "update_at",
+  ];
+
+  const now = new Date();
+  data.created_at = now;
+  data.update_at = now;
+
+  const values = fields.map((field) => data[field]);
+
+  const placeholders = fields.map(() => "?").join(", ");
+  const sql = `INSERT INTO movies (${fields.join(
+    ", "
+  )}) VALUES (${placeholders})`;
+
+  const [result] = await db.query(sql, values);
+
+  return { id: result.insertId, ...data };
+};
+
+exports.update = async (id, data) => {
+  const fields = [
+    "showtime_id",
+    "name",
+    "description",
+    "category",
+    "director",
+    "duration",
+    "trailer",
+    "allowed_age",
+    "release_date",
+    "update_at",
+  ];
+
+  data.update_at = new Date();
+
+  const setClause = fields.map((field) => `${field} = ?`).join(", ");
+  const values = fields.map((field) => data[field]);
+
+  const sql = `UPDATE movies SET ${setClause} WHERE id = ?`;
+
+  await db.query(sql, [...values, id]);
+
+  return { id, ...data };
+};
+
+exports.delete = async (id) => {
+  const [result] = await db.query(`DELETE FROM movies WHERE id = ?`, [id]);
+  return result.affectedRows > 0;
+};

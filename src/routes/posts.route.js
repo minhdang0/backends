@@ -8,20 +8,27 @@ const {
   getAllPost,
   deletePost,
   updatePost,
+  getPostComments,
+  createPostComments,
 } = require("@/controllers/postController");
+// const attachResourceLoaders = require("@/utils/attachResourceLoaders");
+
+// attachResourceLoaders(router, ["post"]);
 
 router.post("/", postsValidator.createPost, createPost);
 
-router.get("/:id", getOnePost);
+router.get("/:post", getOnePost);
 
 router.get("/", getAllPost);
 
-router.delete("/:id", deletePost);
+router.delete("/:post", deletePost);
 
-router.put("/:id", postsValidator.updatePost, updatePost);
+router.put("/:post", postsValidator.updatePost, updatePost);
 
-router.patch("/:id", updatePost);
+router.patch("/:post", updatePost);
 
-router.get("/:id/comments",)
+router.get("/:post/comments", getPostComments);
+
+router.post("/:post/comments", createPostComments);
 
 module.exports = router;

@@ -6,6 +6,8 @@ const success = (res, status, data, message) => {
   });
 };
 const error = (res, status, message, errors) => {
+  if (status === 204) return res.status(204).send();
+
   res.status(status).json({
     success: false,
     message,
