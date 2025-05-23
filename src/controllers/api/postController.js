@@ -1,5 +1,5 @@
 const throw404 = require("@/utils/throw404");
-const response = require("../utils/response");
+const response = require("../../utils/response");
 const {
   getAllPost,
   getPostById,

@@ -1,4 +1,4 @@
-const { readDb, writeDb } = require("../utils/db");
+const { readDb, writeDb } = require("../../utils/db");
 
 const RESOURCE = "todos";
 

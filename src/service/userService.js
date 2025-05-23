@@ -1,9 +1,11 @@
 const userModel = require("@/models/userModel");
 
 class UserService {
-  async getAll() {
-    const users = await userModel.findAll();
-    return users;
+  async getAll(page, limit) {
+    const items = await userModel.findAll(page, limit);
+    const total = await userModel.count();
+
+    return { items, total };
   }
 
   async getById(id) {

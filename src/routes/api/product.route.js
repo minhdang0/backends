@@ -1,13 +1,13 @@
 const express = require("express");
 
-const productValidator = require("../validator/product.validator.js");
+const productValidator = require("../../validator/product.validator.js");
 const {
   createProduct,
   getOneProduct,
   getAllProducts,
   deleteProduct,
   updateProduct,
-} = require("../controllers/productController");
+} = require("../../controllers/api/productController.js");
 const router = express.Router();
 
 router.post("/", productValidator.createProduct, createProduct);

@@ -1,6 +1,6 @@
 const express = require("express");
 
-const movieController = require("../controllers/movieController.js");
+const movieController = require("../../controllers/api/movieController.js");
 const attachResourceLoaders = require("@/utils/attachResourceLoaders.js");
 const router = express.Router();
 

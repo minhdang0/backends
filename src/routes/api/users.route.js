@@ -1,6 +1,6 @@
 const express = require("express");
 
-const userController = require("../controllers/userController.js");
+const userController = require("../../controllers/api/userController.js");
 const attachResourceLoaders = require("@/utils/attachResourceLoaders.js");
 const router = express.Router();
 

@@ -15,5 +15,22 @@ const error = (res, status, message, errors) => {
   });
 };
 
-const response = { success, error };
+const paginate = (res, result, page, limit) => {
+  const { items, total } = result;
+  const lastPage = Math.ceil(total / limit);
+
+  res.status(200).json({
+    success: true,
+    data: {
+      items,
+      pagination: {
+        current_page: +page,
+        per_page: limit,
+        total,
+        last_page: lastPage,
+      },
+    },
+  });
+};
+const response = { success, error, paginate };
 module.exports = response;

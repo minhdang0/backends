@@ -5,8 +5,8 @@ const {
   getAllCategories,
   deleteCategory,
   updateCategory,
-} = require("../controllers/categoryController");
-const categoriesValidator = require("../validator/categories.validator.js");
+} = require("../../controllers/api/categoryController");
+const categoriesValidator = require("../../validator/categories.validator.js");
 const router = express.Router();
 
 router.post("/", categoriesValidator.createCategory, createCategory);

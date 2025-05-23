@@ -1,0 +1,265 @@
+<main class="content-wrapper">
+  <div class="content-header">
+    <h1>Post Topics</h1>
+    <button class="btn btn-primary" id="addTopicBtn">
+      <i class="fas fa-plus"></i> Add New
+    </button>
+  </div>
+
+  <!-- Topic List -->
+  <div class="card">
+    <div class="card-header">
+      <h3>Topics</h3>
+    </div>
+    <div class="card-body">
+      <div class="table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Slug</th>
+              <th>Description</th>
+              <th>Posts</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-id="1">
+              <td>
+                <div class="topic-name">
+                  <i class="fas fa-landmark topic-icon"></i>
+                  Business
+                </div>
+              </td>
+              <td>business</td>
+              <td>Business strategies and entrepreneurship</td>
+              <td>
+                <span class="badge badge-primary">12</span>
+              </td>
+              <td>
+                <div class="action-buttons">
+                  <a
+                    href="#"
+                    class="action-btn edit edit-topic"
+                    data-id="1"
+                    title="Edit"
+                  >
+                    <i class="fas fa-edit"></i>
+                  </a>
+                  <a
+                    href="#"
+                    class="action-btn delete delete-topic"
+                    data-id="1"
+                    data-name="Business"
+                    title="Delete"
+                  >
+                    <i class="fas fa-trash"></i>
+                  </a>
+                </div>
+              </td>
+            </tr>
+            <tr data-id="2">
+              <td>
+                <div class="topic-name">
+                  <i class="fas fa-laptop-code topic-icon"></i>
+                  Technology
+                </div>
+              </td>
+              <td>technology</td>
+              <td>Tech news and innovations</td>
+              <td>
+                <span class="badge badge-primary">24</span>
+              </td>
+              <td>
+                <div class="action-buttons">
+                  <a
+                    href="#"
+                    class="action-btn edit edit-topic"
+                    data-id="2"
+                    title="Edit"
+                  >
+                    <i class="fas fa-edit"></i>
+                  </a>
+                  <a
+                    href="#"
+                    class="action-btn delete delete-topic"
+                    data-id="2"
+                    data-name="Technology"
+                    title="Delete"
+                  >
+                    <i class="fas fa-trash"></i>
+                  </a>
+                </div>
+              </td>
+            </tr>
+            <tr data-id="3">
+              <td>
+                <div class="topic-name">
+                  <i class="fas fa-heartbeat topic-icon"></i>
+                  Health
+                </div>
+              </td>
+              <td>health</td>
+              <td>Health tips and wellness articles</td>
+              <td>
+                <span class="badge badge-primary">18</span>
+              </td>
+              <td>
+                <div class="action-buttons">
+                  <a
+                    href="#"
+                    class="action-btn edit edit-topic"
+                    data-id="3"
+                    title="Edit"
+                  >
+                    <i class="fas fa-edit"></i>
+                  </a>
+                  <a
+                    href="#"
+                    class="action-btn delete delete-topic"
+                    data-id="3"
+                    data-name="Health"
+                    title="Delete"
+                  >
+                    <i class="fas fa-trash"></i>
+                  </a>
+                </div>
+              </td>
+            </tr>
+            <tr data-id="4">
+              <td>
+                <div class="topic-name">
+                  <i class="fas fa-brain topic-icon"></i>
+                  Productivity
+                </div>
+              </td>
+              <td>productivity</td>
+              <td>Productivity hacks and time management</td>
+              <td>
+                <span class="badge badge-primary">15</span>
+              </td>
+              <td>
+                <div class="action-buttons">
+                  <a
+                    href="#"
+                    class="action-btn edit edit-topic"
+                    data-id="4"
+                    title="Edit"
+                  >
+                    <i class="fas fa-edit"></i>
+                  </a>
+                  <a
+                    href="#"
+                    class="action-btn delete delete-topic"
+                    data-id="4"
+                    data-name="Productivity"
+                    title="Delete"
+                  >
+                    <i class="fas fa-trash"></i>
+                  </a>
+                </div>
+              </td>
+            </tr>
+            <tr data-id="5">
+              <td>
+                <div class="topic-name">
+                  <i class="fas fa-plane topic-icon"></i>
+                  Travel
+                </div>
+              </td>
+              <td>travel</td>
+              <td>Travel guides and destination reviews</td>
+              <td>
+                <span class="badge badge-primary">8</span>
+              </td>
+              <td>
+                <div class="action-buttons">
+                  <a
+                    href="#"
+                    class="action-btn edit edit-topic"
+                    data-id="5"
+                    title="Edit"
+                  >
+                    <i class="fas fa-edit"></i>
+                  </a>
+                  <a
+                    href="#"
+                    class="action-btn delete delete-topic"
+                    data-id="5"
+                    data-name="Travel"
+                    title="Delete"
+                  >
+                    <i class="fas fa-trash"></i>
+                  </a>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Icon Library Reference -->
+  <div class="card" style="margin-top: 20px">
+    <div class="card-header">
+      <h3>Available Topic Icons</h3>
+    </div>
+    <div class="card-body">
+      <div class="icon-grid">
+        <div class="icon-item" data-icon="fa-landmark">
+          <i class="fas fa-landmark"></i>
+          <span>Business</span>
+        </div>
+        <div class="icon-item" data-icon="fa-laptop-code">
+          <i class="fas fa-laptop-code"></i>
+          <span>Technology</span>
+        </div>
+        <div class="icon-item" data-icon="fa-heartbeat">
+          <i class="fas fa-heartbeat"></i>
+          <span>Health</span>
+        </div>
+        <div class="icon-item" data-icon="fa-brain">
+          <i class="fas fa-brain"></i>
+          <span>Productivity</span>
+        </div>
+        <div class="icon-item" data-icon="fa-plane">
+          <i class="fas fa-plane"></i>
+          <span>Travel</span>
+        </div>
+        <div class="icon-item" data-icon="fa-book-open">
+          <i class="fas fa-book-open"></i>
+          <span>Education</span>
+        </div>
+        <div class="icon-item" data-icon="fa-utensils">
+          <i class="fas fa-utensils"></i>
+          <span>Food</span>
+        </div>
+        <div class="icon-item" data-icon="fa-dumbbell">
+          <i class="fas fa-dumbbell"></i>
+          <span>Fitness</span>
+        </div>
+        <div class="icon-item" data-icon="fa-palette">
+          <i class="fas fa-palette"></i>
+          <span>Arts</span>
+        </div>
+        <div class="icon-item" data-icon="fa-film">
+          <i class="fas fa-film"></i>
+          <span>Entertainment</span>
+        </div>
+        <div class="icon-item" data-icon="fa-chart-line">
+          <i class="fas fa-chart-line"></i>
+          <span>Finance</span>
+        </div>
+        <div class="icon-item" data-icon="fa-globe">
+          <i class="fas fa-globe"></i>
+          <span>World</span>
+        </div>
+      </div>
+      <p class="help-text">
+        <i class="fas fa-info-circle"></i> Click on an icon to select it when
+        creating or editing a topic.
+      </p>
+    </div>
+  </div>
+</main>

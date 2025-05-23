@@ -38,6 +38,7 @@ exports.create = async (data) => {
   )}) VALUES (${placeholders})`;
 
   const [result] = await db.query(sql, values);
+  console.log(result.insertId);
 
   return { id: result.insertId, ...data };
 };

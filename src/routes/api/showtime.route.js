@@ -1,6 +1,6 @@
 const express = require("express");
 
-const showtimeController = require("../controllers/showtimeController.js");
+const showtimeController = require("../../controllers/api/showtimeController.js");
 const attachResourceLoaders = require("@/utils/attachResourceLoaders.js");
 const router = express.Router();
 

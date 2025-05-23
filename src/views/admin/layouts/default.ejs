@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Detail | Admin Dashboard</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="/assets/css/main.css" />
+    <link rel="stylesheet" href="/assets/css/dashboard.css" />
+    <link rel="stylesheet" href="/assets/css/product.css" />
+  </head>
+  <body>
+    <!-- Sidebar -->
+    <%- include("../partials/sidebar.ejs") %>
+    <!-- Main Content -->
+    <main><%- body %></main>
+
+    <!-- Delete Confirmation Modal -->
+    <!-- <div class="modal" id="confirmDeleteModal">
+      <div class="modal-content">
+        <h3 class="modal-title">Confirm Delete</h3>
+        <div class="modal-body">
+          Are you sure you want to delete "<span id="deleteProductName"></span
+          >"? This action cannot be undone.
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="cancelDelete" class="btn-secondary">
+            Cancel
+          </button>
+          <button type="button" id="confirmDelete" class="btn-danger">
+            Delete
+          </button>
+        </div>
+      </div>
+    </div> -->
+
+    <!-- <script src="assets/js/products.js"></script> -->
+  </body>
+</html>

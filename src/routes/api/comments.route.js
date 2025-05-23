@@ -1,14 +1,14 @@
 const express = require("express");
 const router = express.Router();
 
-const commentsValidator = require("../validator/comments.validator.js");
+const commentsValidator = require("../../validator/comments.validator.js");
 const {
   createComment,
   getOneComment,
   getAllComments,
   deleteComment,
   updateComment,
-} = require("@/controllers/commentCotroller");
+} = require("@/controllers/api/commentCotroller.js");
 
 router.post("/", commentsValidator.createComment, createComment);
 

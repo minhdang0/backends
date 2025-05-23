@@ -10,7 +10,7 @@ const {
   updatePost,
   getPostComments,
   createPostComments,
-} = require("@/controllers/postController");
+} = require("@/controllers/api/postController");
 // const attachResourceLoaders = require("@/utils/attachResourceLoaders");
 
 // attachResourceLoaders(router, ["post"]);

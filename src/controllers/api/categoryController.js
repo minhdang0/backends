@@ -5,7 +5,7 @@ const {
   deleteCategory,
   updateCategory,
 } = require("@/service/categoryService");
-const response = require("../utils/response");
+const response = require("../../utils/response");
 const throw404 = require("@/utils/throw404");
 
 exports.getAllCategories = async (req, res) => {
