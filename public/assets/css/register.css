@@ -1,0 +1,44 @@
+.error-text {
+    color: #f44336;
+    font-size: 12px;
+    margin-top: 5px;
+    display: none;
+}
+
+.form-control.error {
+    border-color: #f44336;
+}
+
+.password-requirements {
+    margin-top: 5px;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    font-size: 12px;
+}
+
+.password-requirements h4 {
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-size: 13px;
+}
+
+.requirement {
+    display: flex;
+    align-items: center;
+    margin-bottom: 3px;
+    color: #666;
+}
+
+.requirement i {
+    margin-right: 5px;
+    font-size: 10px;
+}
+
+.requirement.valid {
+    color: #4caf50;
+}
+
+.requirement.valid i {
+    color: #4caf50;
+}
