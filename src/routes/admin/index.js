@@ -10,6 +10,7 @@ const settingRoute = require("./setting.route");
 const accountRoute = require("./account.route");
 const loginRoute = require("./login.route");
 const registerRoute = require("./register.route");
+const forgotPasswordRoute = require("./forgotPassword.route");
 
 const router = express.Router();
 
@@ -24,5 +25,6 @@ router.use("/settings", settingRoute);
 router.use("/account-settings", accountRoute);
 router.use("/login", loginRoute);
 router.use("/register", registerRoute);
+router.use("/forgot-password", forgotPasswordRoute);
 
 module.exports = router;

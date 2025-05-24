@@ -39,11 +39,6 @@ const sidebarItems = [
     icon: "fa-cog",
     path: "/settings",
   },
-  {
-    title: "AcountSettings",
-    icon: "fa-cog",
-    path: "/accountSettings",
-  },
 ];
 
 function handleSidebar(req, res, next) {
