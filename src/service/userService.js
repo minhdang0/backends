@@ -10,11 +10,19 @@ class UserService {
 
   async getById(id) {
     const users = await userModel.findById(id);
-    return users;
+    return users[0] ?? null;
   }
 
   async remove(id) {
     return await userModel.remove(id);
+  }
+  async update(id, data) {
+    const user = await userModel.update(id, data);
+    return user;
+  }
+  async create(data) {
+    const user = await userModel.create(data);
+    return user;
   }
 }
 

@@ -4,39 +4,8 @@
       <h1>Register</h1>
     </div>
 
-    <form id="registerForm" novalidate>
+    <form id="registerForm" method="POST" action="/admin/register">
       <div class="form-row">
-        <div class="form-group">
-          <label for="firstname">First Name</label>
-          <input
-            type="text"
-            id="firstname"
-            class="form-control"
-            placeholder="Enter first name"
-            data-validate="name"
-            required
-          />
-          <span class="error-text" id="firstnameError"
-            >Please enter a valid first name.</span
-          >
-        </div>
-
-        <div class="form-group">
-          <label for="lastname">Last Name</label>
-          <input
-            type="text"
-            id="lastname"
-            class="form-control"
-            placeholder="Enter last name"
-            data-validate="name"
-            required
-          />
-          <span class="error-text" id="lastnameError"
-            >Please enter a valid last name.</span
-          >
-        </div>
-      </div>
-
       <div class="form-group">
         <label for="email">Email</label>
         <input
@@ -44,6 +13,7 @@
           id="email"
           class="form-control"
           placeholder="Enter your email"
+          name="email"
           required
         />
         <span class="error-text" id="emailError"
@@ -59,56 +29,10 @@
           class="form-control"
           placeholder="Choose a password"
           data-validate="password"
+          name="password"
           required
         />
-        <span class="error-text" id="passwordError"
-          >Password must meet the requirements below.</span
-        >
-        <div class="password-requirements">
-          <h4>Password Requirements:</h4>
-          <div class="requirement" id="lengthReq">
-            <i class="fas fa-circle"></i> At least 8 characters
-          </div>
-          <div class="requirement" id="uppercaseReq">
-            <i class="fas fa-circle"></i> At least one uppercase letter
-          </div>
-          <div class="requirement" id="lowercaseReq">
-            <i class="fas fa-circle"></i> At least one lowercase letter
-          </div>
-          <div class="requirement" id="numberReq">
-            <i class="fas fa-circle"></i> At least one number
-          </div>
-          <div class="requirement" id="specialReq">
-            <i class="fas fa-circle"></i> At least one special character
-          </div>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label for="confirmPassword">Confirm Password</label>
-        <input
-          type="password"
-          id="confirmPassword"
-          class="form-control"
-          placeholder="Confirm password"
-          required
-        />
-        <span class="error-text" id="confirmPasswordError"
-          >Passwords do not match.</span
-        >
-      </div>
-
-      <div class="terms">
-        <input type="checkbox" id="terms" required />
-        <label for="terms"
-          >I agree to the Terms of Service and Privacy Policy</label
-        >
-        <span
-          class="error-text"
-          id="termsError"
-          style="display: block; margin-left: 20px"
-          >You must agree to the terms to continue.</span
-        >
+       
       </div>
 
       <button type="submit" class="btn">Create Account</button>

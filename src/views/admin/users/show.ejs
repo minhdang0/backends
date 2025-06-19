@@ -8,12 +8,80 @@
   <body>
     <h1>User Details</h1>
     <% if (user) { %>
-    <div>
-      <p><strong>ID:</strong> <%= user.id %></p>
-      <p><strong>Name:</strong> <%= user.first_name %></p>
+    <div id="info-user">
+      <p><strong>First Name:</strong> <%= user.first_name %></p>
+      <p><strong>Last Name:</strong> <%= user.last_name %></p>
+      <p><strong>Username:</strong> <%= user.username %></p>
       <p><strong>Email:</strong> <%= user.email %></p>
+      <p><strong>Gender:</strong> <%= user.gender %></p>
+      <div>
+        <button id="btn-edit">Edit</button>
+      </div>
     </div>
     <% } %>
+    <form
+      method="POST"
+      action="/admin/users/<%= user.id %>?_method=PUT""
+      id="form-update"
+      style="display: none"
+    >
+      <!-- <input type="hidden" name="_method" value="PUT" /> -->
+      <div>
+        <label for="first_name">First name</label>
+        <input name="first_name" value="<%= user.first_name %>" />
+        <% if (errors?.first_name) { %>
+
+        <span class="error-text" id="first_name_error"
+          ><%= errors.first_name %></span
+        >
+        <% } %>
+      </div>
+      <div>
+        <label for="last_name">Last name</label>
+        <input name="last_name" value="<%= user.last_name %>" />
+      </div>
+      <div>
+        <label for="username">Username</label>
+        <input name="username" value="<%= user.username %>" />
+      </div>
+      <div>
+        <label for="email">Email</label>
+        <input name="email" value="<%= user.email %>" />
+      </div>
+      <div>
+        <label for="gender">Gender</label>
+        <select name="gender">
+          <option value="<%= user.gender%>" selected><%= user.gender%></option>
+          <% if (user.gender !== 'male') { %>
+          <option value="male">male</option>
+          <%} %> <% if (user.gender !== 'female') { %>
+          <option value="female">female</option>
+          <%} %> <% if (user.gender !== 'other') { %>
+          <option value="other">other</option>
+          <%} %>
+        </select>
+      </div>
+      <button type="submit">Update</button>
+      <button id="btn-cancel">Cancel</button>
+    </form>
+
+    <script>
+      const btnEdit = document.getElementById("btn-edit");
+      const btnCancel = document.getElementById("btn-cancel");
+      const infoUser = document.getElementById("info-user");
+      const form = document.getElementById("form-update");
+
+      btnEdit.addEventListener("click", (e) => {
+        e.preventDefault();
+        infoUser.style.display = "none";
+        form.style.display = "block";
+      });
+
+      btnCancel.addEventListener("click", (e) => {
+        e.preventDefault();
+        infoUser.style.display = "block";
+        form.style.display = "none";
+      });
+    </script>
   </body>
 </html>
-*/

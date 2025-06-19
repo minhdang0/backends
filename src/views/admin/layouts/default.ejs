@@ -11,12 +11,21 @@
     <link rel="stylesheet" href="/assets/css/main.css" />
     <link rel="stylesheet" href="/assets/css/dashboard.css" />
     <link rel="stylesheet" href="/assets/css/product.css" />
+    <link rel="stylesheet" href="/assets/css/show.css" />
+    <link rel="stylesheet" href="/assets/css/user.css" />
   </head>
   <body>
     <!-- Sidebar -->
     <%- include("../partials/sidebar.ejs") %>
     <!-- Main Content -->
-    <main><%- body %></main>
+
+    <main>
+      <!-- message -->
+      <%- include("../partials/flashMessage.ejs") %>
+
+      <!-- content -->
+      <%- body %>
+    </main>
 
     <!-- Delete Confirmation Modal -->
     <!-- <div class="modal" id="confirmDeleteModal">

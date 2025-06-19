@@ -1,0 +1,83 @@
+<main>
+  <div class="dashboard-header">
+    <h1>Dashboard Overview</h1>
+  </div>
+
+  <!-- Stats Cards -->
+  <div class="stats-grid">
+    <div class="stat-card">
+      <h3>Total Sales</h3>
+      <p class="stat-value">$24,780</p>
+      <p class="trend up">
+        <i class="fas fa-arrow-up"></i> 12.5% from last month
+      </p>
+      <div class="stat-icon">
+        <i class="fas fa-dollar-sign"></i>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <h3>New Customers</h3>
+      <p class="stat-value">578</p>
+      <p class="trend up">
+        <i class="fas fa-arrow-up"></i> 8.2% from last month
+      </p>
+      <div class="stat-icon">
+        <i class="fas fa-user-plus"></i>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <h3>Active Products</h3>
+      <p class="stat-value">1,247</p>
+      <p class="trend up">
+        <i class="fas fa-arrow-up"></i> 4.3% from last month
+      </p>
+      <div class="stat-icon">
+        <i class="fas fa-box"></i>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <h3>Bounce Rate</h3>
+      <p class="stat-value">42.8%</p>
+      <p class="trend down">
+        <i class="fas fa-arrow-down"></i> 2.7% from last month
+      </p>
+      <div class="stat-icon">
+        <i class="fas fa-chart-pie"></i>
+      </div>
+    </div>
+  </div>
+
+  <!-- Charts -->
+  <div class="charts-grid">
+    <div class="chart-card">
+      <h3>Sales Overview</h3>
+      <div class="chart-container">
+        <canvas id="salesChart"></canvas>
+      </div>
+    </div>
+
+    <div class="chart-card">
+      <h3>Weekly Visitors</h3>
+      <div class="chart-container">
+        <canvas id="visitorsChart"></canvas>
+      </div>
+    </div>
+
+    <div class="chart-card">
+      <h3>Sales Distribution</h3>
+      <div class="chart-container">
+        <canvas id="salesDistributionChart"></canvas>
+      </div>
+    </div>
+
+    <div class="chart-card">
+      <h3>Revenue (Actual vs Projected)</h3>
+      <div class="chart-container">
+        <canvas id="revenueChart"></canvas>
+      </div>
+    </div>
+  </div>
+</main>

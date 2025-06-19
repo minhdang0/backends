@@ -1,0 +1,262 @@
+<div class="app-container">
+  <!-- Main Content -->
+  <main class="content-wrapper">
+    <div class="content-header">
+      <h1>Create New User</h1>
+      <a href="/admin/users" class="btn btn-secondary">
+        <i class="fas fa-arrow-left"></i> Back to Users
+      </a>
+    </div>
+
+    <!-- Success Message -->
+    <div
+      id="successMessage"
+      class="message message-success"
+      style="display: none"
+    >
+      <i class="fas fa-check-circle"></i>
+      <span data-message-text>User has been created successfully.</span>
+    </div>
+
+    <!-- Create User Form -->
+    <form id="createUserForm" class="card" method="POST" action="/admin/users">
+      <div class="card-header">
+        <h3>User Information</h3>
+      </div>
+      <div class="card-body">
+        <div class="form-section">
+          <h3>Personal Information</h3>
+          <div class="form-group">
+            <label for="first_name">First Name*</label>
+            <input
+              type="text"
+              id="first_name"
+              name="first_name"
+              class="form-control"
+              data-validate="name"
+              value="<%= old?.first_name %>"
+            />
+            <% if (errors?.first_name) { %>
+
+            <span class="error-text" id="first_name_error"
+              ><%= errors.first_name %></span
+            >
+            <% } %>
+          </div>
+          <div class="form-group">
+            <label for="lastName">Last Name*</label>
+            <input
+              type="text"
+              id="last_name"
+              name="last_name"
+              class="form-control"
+              data-validate="name"
+              value="<%= old?.last_name %>"
+            />
+            <% if (errors?.last_name) { %>
+
+            <span class="error-text" id="first_name_error"
+              ><%= errors.last_name %></span
+            >
+            <% } %>
+          </div>
+          <div class="form-group">
+            <label for="username">Username*</label>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              class="form-control"
+              data-validate="name"
+            />
+            <span class="error-text" id="userNameError"></span>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">Email*</label>
+              <input
+                type="text"
+                id="email"
+                name="email"
+                class="form-control"
+                value="<%= old?.email %>"
+              />
+              <% if (errors?.email) { %>
+
+              <span class="error-text" id="first_name_error"
+                ><%= errors.email %></span
+              >
+              <% } %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="address">Address</label>
+            <textarea
+              id="address"
+              name="address"
+              class="form-control"
+              rows="2"
+            ></textarea>
+            <span class="error-text" id="addressError"></span>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h3>Account Information</h3>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="is_active">Status*</label>
+              <select id="is_active" name="is_active" class="form-control">
+                <option value="">Select Status</option>
+                <option value="1" selected>Active</option>
+                <option value="0">Inactive</option>
+              </select>
+              <span class="error-text" id="is_activeError"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h3>Password</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="userPassword">Password*</label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                class="form-control"
+                data-validate="password"
+              />
+              <span class="error-text" id="userPasswordError"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="userConfirmPassword">Confirm Password*</label>
+              <input
+                type="password"
+                id="userConfirmPassword"
+                name="confirmPassword"
+                class="form-control"
+              />
+              <span class="error-text" id="userConfirmPasswordError"></span>
+            </div>
+          </div>
+          <p
+            class="form-help-text"
+            style="color: #666; font-size: 13px; margin-top: 5px"
+          >
+            Password must be at least 8 characters and include uppercase,
+            lowercase, number, and special character.
+          </p>
+        </div>
+
+        <div class="form-buttons">
+          <button type="button" class="btn btn-secondary" id="cancelBtn">
+            Cancel
+          </button>
+          <button type="submit" class="btn btn-primary">
+            <i class="fas fa-save"></i> Create User
+          </button>
+        </div>
+      </div>
+    </form>
+  </main>
+</div>
+
+<!-- <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Initialize form validation
+    initFormValidation("createUserForm");
+
+    // Handle form submission
+    document
+      .getElementById("createUserForm")
+      .addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        if (validateForm("createUserForm")) {
+          // Check if password and confirm password match
+          const password = document.getElementById("userPassword").value;
+          const confirmPassword = document.getElementById(
+            "userConfirmPassword"
+          ).value;
+
+          if (password !== confirmPassword) {
+            showError(
+              document.getElementById("userConfirmPassword"),
+              "Passwords do not match."
+            );
+            return;
+          }
+
+          // Create user (in a real application, this would be an API call)
+          console.log("Creating new user...");
+
+          // Generate form data for logging (in a real app, this would be sent to the server)
+          const formData = {
+            first: document.getElementById("firstName").value,
+            username: document.getElementById("lastName").value,
+            email: document.getElementById("username").value,
+            phone: document.getElementById("email").value,
+            address: document.getElementById("address").value,
+            role: document.getElementById("is_active").value,
+            status: document.getElementById("is_active").value,
+            sendEmail: document.getElementById("emailNotifications").checked,
+            notifyAdmin: document.getElementById("adminNotifications").checked,
+          };
+
+          console.log("Form data:", formData);
+
+          // Show success message
+          showMessage(
+            "successMessage",
+            "User has been created successfully.",
+            3000
+          );
+
+          // Redirect after a delay
+          setTimeout(() => {
+            window.location.href = "users.html";
+          }, 2000);
+        }
+      });
+
+    // Handle cancel button
+    document.getElementById("cancelBtn").addEventListener("click", function () {
+      window.location.href = "users.html";
+    });
+
+    // Custom validation for password confirmation
+    document
+      .getElementById("userConfirmPassword")
+      .addEventListener("blur", function () {
+        const password = document.getElementById("userPassword").value;
+        const confirmPassword = this.value;
+
+        if (password !== confirmPassword) {
+          showError(this, "Passwords do not match.");
+        }
+      });
+  });
+</script>
+
+<style>
+  /* Additional styling for checkbox groups */
+  .checkbox-group {
+    margin-bottom: 10px;
+  }
+
+  .checkbox-group input[type="checkbox"] {
+    margin-right: 8px;
+  }
+
+  .form-help-text {
+    margin-top: 5px;
+    color: #666;
+    font-size: 13px;
+  }
+</style> -->

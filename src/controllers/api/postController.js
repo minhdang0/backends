@@ -8,7 +8,8 @@ const {
   deletePost,
 } = require("@/service/postService");
 const { getCommentsByPostId } = require("@/service/commentService");
-
+const transporter = require("@/configs/mail");
+//pcdi ninz qfwi ivlk
 exports.getAllPost = async (req, res) => {
   let searchValue = null;
   if (req.query?.title) {
@@ -17,6 +18,18 @@ exports.getAllPost = async (req, res) => {
   let posts = await getAllPost(searchValue);
   if (!posts) throw404();
 
+  const message = {
+    from: "dangnhatminh8402@gmail.com",
+    to: "dangnhatminh08042002@gmail.com",
+    subject: "Message title",
+    text: "Hello world?", // plain‑text body
+    html: `<div>
+              <p style="color: red">HTML version of the message</p>
+              <img src ="https://hoanghamobile.com/tin-tuc/wp-content/uploads/2024/07/hinh-anh-oto.jpg" title="O to" />
+            </div>`, // HTML body
+  };
+  const info = await transporter.sendMail(message);
+  console.log(info);
   response.success(res, 200, posts);
 };
 

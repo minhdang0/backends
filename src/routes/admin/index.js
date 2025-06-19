@@ -11,6 +11,8 @@ const accountRoute = require("./account.route");
 const loginRoute = require("./login.route");
 const registerRoute = require("./register.route");
 const forgotPasswordRoute = require("./forgotPassword.route");
+const authRoute = require("./auth.route");
+const dashboardRoute = require("./dashboard.route");
 
 const router = express.Router();
 
@@ -26,5 +28,7 @@ router.use("/account-settings", accountRoute);
 router.use("/login", loginRoute);
 router.use("/register", registerRoute);
 router.use("/forgot-password", forgotPasswordRoute);
+router.use("/dashboard", dashboardRoute);
+router.use("/", authRoute);
 
 module.exports = router;

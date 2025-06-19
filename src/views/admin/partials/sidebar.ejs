@@ -1,10 +1,12 @@
 <aside class="sidebar">
   <div class="sidebar-logo">
-    <h1>Admin Dashboard</h1>
+    <% if (auth) { %>
+    <p>Hi, <%= auth.email %></p>
+    <% } %>
   </div>
 
   <nav class="sidebar-menu">
-    <a href="index.html" class="menu-item">
+    <a href="/admin/dashboard" class="menu-item">
       <i class="fas fa-home"></i>
       Dashboard
     </a>
@@ -29,9 +31,9 @@
     </div>
     <i class="fas fa-chevron-down dropdown-icon"></i>
     <div class="user-dropdown">
-      <a href="login.html" class="dropdown-item">
-        <i class="fas fa-sign-out-alt"></i> Logout
-      </a>
+      <form method="POST" action="/admin/logout?_method=DELETE">
+        <button type="submit" class="menu-item">Logout</button>
+      </form>
     </div>
   </div>
 </aside>

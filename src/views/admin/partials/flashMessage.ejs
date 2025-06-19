@@ -1,0 +1,20 @@
+<div class="flash-messages">
+  <style>
+    .flash-message {
+      padding: 16px 20px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      background: #ccc;
+    }
+
+    .flash-message.success {
+      border-color: #a3cfbb;
+      background: #d1e7dd;
+    }
+  </style>
+  <% const success = getFlashMessage("success") %> <% if (typeof success !==
+  'undefined' && success.length > 0) { %>
+  <div class="flash-message success"><%= success[0] %></div>
+  <% } %>
+</div>

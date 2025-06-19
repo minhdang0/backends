@@ -82,3 +82,9 @@ body {
 .footer a:hover {
     text-decoration: underline;
 }
+
+.error-text {
+    color: red;
+    font-size: 12px;
+    display: block;
+}
